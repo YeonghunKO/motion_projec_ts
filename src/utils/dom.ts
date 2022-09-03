@@ -17,4 +17,10 @@ const createElement = ({ type, classes, id }: CreateElement): HTMLElement => {
   return element;
 };
 
-export { createElement };
+const getElement = (selector: string): HTMLElement | null => {
+  return document.querySelector(selector);
+};
+
+const $app = getElement('#app');
+
+export { createElement, getElement, $app };
