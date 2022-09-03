@@ -1,3 +1,5 @@
-import Main from './components/Main';
-import Nav from './components/Nav';
+import App from './App';
+
 import './scss/main.scss';
+
+new App();
