@@ -1,0 +1,18 @@
+// @mixin avatar($size, $circle: false) {
+//   width: $size;
+//   height: $size;
+
+//   @if $circle {
+//     border-radius: $size/2;
+//   }
+// }
+
+// @mixin awesome($word) {
+//   text-decoration: none;
+//   display: block;
+//   @if $word == 'odd' {
+//     color: blue;
+//   } @else {
+//     color: red;
+//   }
+// }
