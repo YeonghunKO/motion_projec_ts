@@ -1,6 +1,7 @@
 @import '_variables';
+@import './_reset';
 
 body {
-  background: $red;
+  background: url('../img/motion-background.png');
   background-size: cover;
 }
