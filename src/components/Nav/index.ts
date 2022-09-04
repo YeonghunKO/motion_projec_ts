@@ -1,10 +1,11 @@
 import { $app, createElement } from '../../utils/dom';
 import Button from '../Button';
 
+type Banner = { banner: string };
 export default class Nav {
   private $NavBox = createElement({ type: 'nav', classes: ['nav_box'] });
   private banner: string;
-  constructor(banner: string) {
+  constructor({ banner }: Banner) {
     this.banner = banner;
     this.render();
   }
@@ -22,9 +23,19 @@ export default class Nav {
     );
 
     $buttonsContainer.append(...$buttons);
+    this.addButtonsEvent($buttonsContainer);
 
     this.$NavBox.append($banner, $buttonsContainer);
 
     $app?.appendChild(this.$NavBox);
+  }
+
+  addButtonsEvent($buttonsContainer: HTMLElement) {
+    $buttonsContainer.addEventListener('click', function ({ target }) {
+      // (target as Element).textContent
+      if (target instanceof Element) {
+        const { textContent } = target;
+      }
+    });
   }
 }
