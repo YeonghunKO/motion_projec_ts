@@ -1,12 +1,15 @@
 import { createModalBox } from '../../utils/dom';
 
 export default class InfoBox {
+  private type: string;
   constructor({ type }: { type: string }) {
-    this.render(type);
+    this.type = type;
   }
 
-  render(type: string) {
-    switch (type) {
+  render(): HTMLElement | null {
+    console.log(this.type);
+
+    switch (this.type) {
       case 'VIDEO':
       case 'IMAGE':
         return createModalBox({ titleName: 'title', bodyName: 'url' });
