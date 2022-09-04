@@ -18,6 +18,7 @@ export default class Nav {
       type: 'div',
       classes: ['nav_button_container'],
     });
+
     const $buttons = ['IMAGE', 'VIDEO', 'NOTE', 'TASK'].map(button =>
       new Button(button).render()
     );
