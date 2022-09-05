@@ -7,6 +7,7 @@ module.exports = {
     path: path.join(__dirname, '/dist'), // 번들 결과물 위치
     filename: 'bundle.js',
   },
+
   module: {
     rules: [
       {
@@ -50,4 +51,5 @@ module.exports = {
     port: 5500,
   },
   mode: 'development', // 번들링 모드 development / production
+  devtool: 'source-map',
 };
