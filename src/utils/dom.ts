@@ -21,14 +21,19 @@ const getElement = (selector: string): HTMLElement | null => {
   return document.querySelector(selector);
 };
 
-const createModalBox = ({
+const createModalInfoBox = ({
   titleName,
   bodyName,
+  type,
 }: {
   titleName: string;
   bodyName: string;
+  type: string;
 }) => {
-  const box = createElement({ type: 'div', classes: ['modal_info_box'] });
+  const box = createElement({
+    type: 'div',
+    classes: ['modal_info_box', type],
+  });
   box.innerHTML = `
   <button type='button' class='close_button'>X</button>
   <div>
@@ -37,7 +42,6 @@ const createModalBox = ({
    <label>${bodyName}</label>
    <input class='body_input'/>
    </div>
-   <
    <button type='button' class='add_button'>ADD</button>
    `;
   return box;
@@ -45,4 +49,4 @@ const createModalBox = ({
 
 const $app = getElement('#app');
 
-export { createElement, getElement, $app, createModalBox };
+export { createElement, getElement, $app, createModalInfoBox };

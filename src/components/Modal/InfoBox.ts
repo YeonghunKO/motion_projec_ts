@@ -1,26 +1,32 @@
-import { createModalBox } from '../../utils/dom';
+import { createModalInfoBox } from '../../utils/dom';
 
 export default class InfoBox {
   private type: string;
-  constructor({ type }: { type: string }) {
-    this.type = type;
-  }
+  constructor() {}
 
-  render(): HTMLElement | null {
-    console.log(this.type);
-
-    switch (this.type) {
-      case 'VIDEO':
-      case 'IMAGE':
-        return createModalBox({ titleName: 'title', bodyName: 'url' });
-      case 'NOTE':
-      case 'TASK':
-        return createModalBox({ titleName: 'title', bodyName: 'body' });
-
-      default:
-        console.log('invalid type');
-
-        break;
-    }
+  render(): HTMLElement[] {
+    const $infoBoxes = [
+      createModalInfoBox({
+        titleName: 'title',
+        bodyName: 'url',
+        type: 'IMAGE',
+      }),
+      // createModalInfoBox({
+      //   titleName: 'title',
+      //   bodyName: 'url',
+      //   type: 'VIDEO',
+      // }),
+      // createModalInfoBox({
+      //   titleName: 'title',
+      //   bodyName: 'body',
+      //   type: 'NOTE',
+      // }),
+      // createModalInfoBox({
+      //   titleName: 'title',
+      //   bodyName: 'body',
+      //   type: 'TASK',
+      // }),
+    ];
+    return $infoBoxes;
   }
 }

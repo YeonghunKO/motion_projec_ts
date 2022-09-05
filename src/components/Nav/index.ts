@@ -6,9 +6,11 @@ type Banner = { banner: string };
 export default class Nav {
   private $NavBox = createElement({ type: 'nav', classes: ['nav_box'] });
   private banner: string;
+  private $modal: Modal;
   constructor({ banner }: Banner) {
     this.banner = banner;
     this.render();
+    this.$modal = new Modal();
   }
 
   render() {
@@ -37,8 +39,6 @@ export default class Nav {
       // (target as Element).textContent
       if (target instanceof Element) {
         const { textContent } = target;
-        const modal = new Modal({ type: textContent });
-        modal.render();
       }
     });
   }

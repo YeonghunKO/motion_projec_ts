@@ -10,16 +10,13 @@ export default class Modal {
   private type: string;
   private $infoBox: InfoBox;
 
-  constructor({ type }: { type: string }) {
-    this.type = type;
+  constructor() {
+    this.$infoBox = new InfoBox();
     this.render();
-    this.$infoBox = new InfoBox({ type: this.type });
   }
 
   render() {
-    console.log(this.type);
-
-    this.$container.appendChild(this.$infoBox?.render());
+    this.$container.append(...this.$infoBox?.render());
     $app?.appendChild(this.$container);
   }
 
