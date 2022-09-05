@@ -35,10 +35,12 @@ export default class Nav {
   }
 
   addButtonsEvent($buttonsContainer: HTMLElement) {
-    $buttonsContainer.addEventListener('click', function ({ target }) {
+    $buttonsContainer.addEventListener('click', ({ target }) => {
       // (target as Element).textContent
       if (target instanceof Element) {
         const { textContent } = target;
+        this.$modal.type = textContent;
+        this.$modal.show();
       }
     });
   }

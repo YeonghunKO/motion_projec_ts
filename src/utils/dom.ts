@@ -35,14 +35,14 @@ const createModalInfoBox = ({
     classes: ['modal_info_box', type],
   });
   box.innerHTML = `
-  <button type='button' class='close_button'>X</button>
+  <button type='button' class='modal_info_button close'>X</button>
   <div>
    <label>${titleName}</label>
-   <input class='title_input'/>
+   <input type='text' placeholder='입력을 하시오' class='title_input'/>
    <label>${bodyName}</label>
-   <input class='body_input'/>
+   <input type='text' placeholder='입력을 하시오' class='body_input'/>
    </div>
-   <button type='button' class='add_button'>ADD</button>
+   <button type='button' class='modal_info_button add'>ADD</button>
    `;
   return box;
 };
