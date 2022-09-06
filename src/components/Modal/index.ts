@@ -1,4 +1,6 @@
 import { $app, createElement, getElement } from '../../utils/dom';
+import { data } from '../../utils/store/data';
+import { v4 as uuid } from 'uuid';
 import InfoBox from './InfoBox';
 
 export default class Modal {
@@ -52,7 +54,18 @@ export default class Modal {
           const titleInputVal = ($titleInput as HTMLInputElement).value;
           const bodyInputVal = ($bodyInput as HTMLInputElement).value;
 
-          // this.close()
+          const newData = {
+            id: uuid(),
+            type: this.type,
+            title: titleInputVal,
+            body: bodyInputVal,
+          };
+          data.dispatch({ type: 'ADD', newData });
+          console.log(data.data);
+          ($titleInput as HTMLInputElement).value = '';
+          ($bodyInput as HTMLInputElement).value = '';
+
+          this.close();
         }
       }
     });
