@@ -1,5 +1,6 @@
 import { $app, createElement, getElement } from '../../utils/dom';
 import { data } from '../../utils/store/data';
+import { DataFormat } from '../../types/Data';
 import { v4 as uuid } from 'uuid';
 import InfoBox from './InfoBox';
 
@@ -37,8 +38,6 @@ export default class Modal {
       if (target instanceof Element) {
         const isCloseButton = target.closest('.close');
         const isAddButton = target.closest('.add');
-        // const $titleInput = getElement('.title_input');
-        // console.log(target);
 
         if (isCloseButton) {
           this.close();
@@ -54,18 +53,24 @@ export default class Modal {
           const titleInputVal = ($titleInput as HTMLInputElement).value;
           const bodyInputVal = ($bodyInput as HTMLInputElement).value;
 
-          const newData = {
-            id: uuid(),
-            type: this.type,
-            title: titleInputVal,
-            body: bodyInputVal,
-          };
-          data.dispatch({ type: 'ADD', newData });
-          console.log(data.data);
-          ($titleInput as HTMLInputElement).value = '';
-          ($bodyInput as HTMLInputElement).value = '';
+          if (titleInputVal.length && bodyInputVal.length) {
+            const newData: DataFormat = {
+              id: uuid(),
+              type: this.type,
+              title: titleInputVal,
+              body:
+                this.type === 'TASK' ? bodyInputVal.split('\n') : bodyInputVal,
+            };
 
-          this.close();
+            data.dispatch({ type: 'ADD', newData });
+            console.log(data.data);
+            ($titleInput as HTMLInputElement).value = '';
+            ($bodyInput as HTMLInputElement).value = '';
+
+            this.close();
+          } else {
+            alert('title과 body에 뭔가라도 적으라고!!!!!');
+          }
         }
       }
     });

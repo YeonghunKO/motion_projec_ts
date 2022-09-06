@@ -1,29 +1,4 @@
-declare global {
-  interface NodeList {
-    remove(): any;
-  }
-  interface HTMLCollection {
-    remove(): any;
-  }
-}
-
-type CreateElement = {
-  type: string;
-  classes?: string[];
-  id?: string;
-};
-
-Element.prototype.remove = function () {
-  this.parentElement.removeChild(this);
-};
-
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
-  for (var i = this.length - 1; i >= 0; i--) {
-    if (this[i] && this[i].parentElement) {
-      this[i].parentElement.removeChild(this[i]);
-    }
-  }
-};
+import { CreateElement, CreateModalInfoBox } from '../types/Dom';
 
 const createElement = ({ type, classes, id }: CreateElement): HTMLElement => {
   const element = document.createElement(type);
@@ -46,11 +21,7 @@ const createModalInfoBox = ({
   titleName,
   bodyName,
   type,
-}: {
-  titleName: string;
-  bodyName: string;
-  type: string;
-}) => {
+}: CreateModalInfoBox) => {
   const box = createElement({
     type: 'div',
     classes: ['modal_info_box', type],
@@ -61,12 +32,20 @@ const createModalInfoBox = ({
    <label>${titleName}</label>
    <input type='text' placeholder='입력을 하시오' value='' class='title_input'/>
    <label>${bodyName}</label>
-   <input type='text' placeholder='입력을 하시오' value='' class='body_input'/>
+   ${
+     type === 'TASK'
+       ? "<textarea class='body_input' placeholder='테스크를 입력할때마다 엔터를 누르시오'></textarea>"
+       : "<input type='text' placeholder='입력을 하시오' class='body_input'/>"
+   }
+ 
+  
    </div>
    <button type='button' class='modal_info_button add'>ADD</button>
    `;
   return box;
 };
+
+const createMain = () => {};
 
 const $app = getElement('#app');
 

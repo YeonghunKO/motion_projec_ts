@@ -1,17 +1,4 @@
-type dataKey = 'id' | 'type' | 'title' | 'body';
-type dataBody = string;
-
-// type DataFormat = {
-//   [key in dataKey]: string;
-// };
-
-type DataFormat = Record<dataKey, dataBody>;
-
-type dispatchAction = {
-  type: string;
-  newData?: DataFormat;
-  id?: string | number;
-};
+import { DataFormat, dispatchAction } from '../../types/Data';
 
 class Data {
   constructor(private dataArray: DataFormat[] = []) {}
