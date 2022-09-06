@@ -1,3 +1,8 @@
+import { DataFormat } from '../../types/Data';
+import { data } from '../../utils/store/data';
+
 export default class Main {
-  constructor() {}
+  constructor(private listContainer: HTMLElement) {}
+
+  render() {}
 }

@@ -1,6 +1,7 @@
 import { createModalInfoBox, getElement } from '../../utils/dom';
+import { ModalType } from '../../types/Modal';
 
-export default class InfoBox {
+export default class InfoBox implements ModalType {
   private type: string;
   constructor() {}
 

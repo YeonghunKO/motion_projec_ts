@@ -1,10 +1,11 @@
 import { $app, createElement, getElement } from '../../utils/dom';
 import { data } from '../../utils/store/data';
 import { DataFormat } from '../../types/Data';
+import { ModalType } from '../../types/Modal';
 import { v4 as uuid } from 'uuid';
 import InfoBox from './InfoBox';
 
-export default class Modal {
+export default class Modal implements ModalType {
   private $container: HTMLElement = createElement({
     type: 'div',
     classes: ['modal_container'],

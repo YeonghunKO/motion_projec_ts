@@ -1,7 +1,7 @@
-interface Modal {
-  render(): HTMLElement | void;
-  show(): void;
-  close(): void;
+interface ModalType {
+  render(): HTMLElement[] | void;
+  show(type?: string): void;
+  close(type?: string): void;
 }
 
-export { Modal };
+export { ModalType };
