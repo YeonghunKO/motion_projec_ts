@@ -27,14 +27,14 @@ export default class Nav {
     );
 
     $buttonsContainer.append(...$buttons);
-    this.addButtonsEvent($buttonsContainer);
+    this.addEventToButtons($buttonsContainer);
 
     this.$NavBox.append($banner, $buttonsContainer);
 
     $app?.appendChild(this.$NavBox);
   }
 
-  addButtonsEvent($buttonsContainer: HTMLElement) {
+  addEventToButtons($buttonsContainer: HTMLElement) {
     $buttonsContainer.addEventListener('click', ({ target }) => {
       // (target as Element).textContent
       if (target instanceof Element) {

@@ -1,4 +1,4 @@
-import { $app, createElement } from '../../utils/dom';
+import { $app, createElement, getElement } from '../../utils/dom';
 import InfoBox from './InfoBox';
 
 export default class Modal {
@@ -35,17 +35,22 @@ export default class Modal {
       if (target instanceof Element) {
         const isCloseButton = target.closest('.close');
         const isAddButton = target.closest('.add');
-        const $titleInput: HTMLInputElement = target.closest('.title_input');
-        const $bodyInput: HTMLInputElement = target.closest('.body_input');
-        console.log(target);
+        // const $titleInput = getElement('.title_input');
+        // console.log(target);
 
         if (isCloseButton) {
           this.close();
         }
 
         if (isAddButton) {
-          console.log('titleInput', $titleInput);
-          console.log('bodyInput', $bodyInput);
+          const $titleInput = getElement(
+            `.modal_info_box.${this.type} .title_input`
+          );
+          const $bodyInput = getElement(
+            `.modal_info_box.${this.type} .body_input`
+          );
+          const titleInputVal = ($titleInput as HTMLInputElement).value;
+          const bodyInputVal = ($bodyInput as HTMLInputElement).value;
 
           // this.close()
         }
