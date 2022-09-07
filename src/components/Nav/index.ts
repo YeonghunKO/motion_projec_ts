@@ -2,15 +2,14 @@ import { $app, createElement } from '../../utils/dom';
 import Button from '../Button';
 import Modal from '../Modal';
 
-type Banner = { banner: string };
 export default class Nav {
   private $NavBox = createElement({ type: 'nav', classes: ['nav_box'] });
   private banner: string;
   private $modal: Modal;
-  constructor({ banner }: Banner) {
+  constructor({ banner, $modal }: { banner: string; $modal: Modal }) {
     this.banner = banner;
     this.render();
-    this.$modal = new Modal();
+    this.$modal = $modal;
   }
 
   render() {

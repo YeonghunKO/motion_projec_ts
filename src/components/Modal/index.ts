@@ -45,33 +45,8 @@ export default class Modal implements ModalType {
         }
 
         if (isAddButton) {
-          const $titleInput = getElement(
-            `.modal_info_box.${this.type} .title_input`
-          );
-          const $bodyInput = getElement(
-            `.modal_info_box.${this.type} .body_input`
-          );
-          const titleInputVal = ($titleInput as HTMLInputElement).value;
-          const bodyInputVal = ($bodyInput as HTMLInputElement).value;
-
-          if (titleInputVal.length && bodyInputVal.length) {
-            const newData: DataFormat = {
-              id: uuid(),
-              type: this.type,
-              title: titleInputVal,
-              body:
-                this.type === 'TASK' ? bodyInputVal.split('\n') : bodyInputVal,
-            };
-
-            data.dispatch({ type: 'ADD', newData });
-            console.log(data.data);
-            ($titleInput as HTMLInputElement).value = '';
-            ($bodyInput as HTMLInputElement).value = '';
-
-            this.close();
-          } else {
-            alert('title과 body에 뭔가라도 적으라고!!!!!');
-          }
+          this.$infoBox.type = this.type;
+          this.$infoBox.addData();
         }
       }
     });
