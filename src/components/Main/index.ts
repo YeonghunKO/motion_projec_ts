@@ -1,14 +1,14 @@
 import { DataFormat } from '../../types/Data';
 import { data } from '../../utils/store/data';
-import { createMain, $app } from '../../utils/dom';
+import { $app, getElement, createElement } from '../../utils/dom';
 
 export default class Main {
-  private $internalMain: HTMLElement;
-  private $internalUl: HTMLElement;
+  private $internalMain: HTMLElement = getElement('.data_container');
+  private $internalUl: HTMLElement = createElement({
+    type: 'ul',
+    classes: ['data_container_ul'],
+  });
   constructor() {
-    const { $main, $ul } = createMain();
-    this.$internalMain = $main;
-    this.$internalUl = $ul;
     this.render();
   }
 
@@ -21,10 +21,11 @@ export default class Main {
   }
 
   render() {
-    $app.appendChild(this.$main);
+    this.$main.appendChild(this.$ul);
+    // $app.appendChild(this.$main);
   }
 
-  addData(newData: DataFormat) {
-    // data.data
+  addData() {
+    // const $newList = create
   }
 }

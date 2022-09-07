@@ -4,6 +4,7 @@ import { DataFormat } from '../../types/Data';
 import { ModalType } from '../../types/Modal';
 import { v4 as uuid } from 'uuid';
 import InfoBox from './InfoBox';
+import Main from '../Main';
 
 export default class Modal implements ModalType {
   private $container: HTMLElement = createElement({
@@ -12,9 +13,11 @@ export default class Modal implements ModalType {
   });
 
   private $infoBox: InfoBox;
+  private $main: Main;
   private interalType: string;
-  constructor() {
+  constructor({ $main }: { $main: Main }) {
     this.$infoBox = new InfoBox();
+    this.$main = $main;
     this.render();
   }
 
@@ -46,7 +49,8 @@ export default class Modal implements ModalType {
 
         if (isAddButton) {
           this.$infoBox.type = this.type;
-          this.$infoBox.addData();
+          this.$infoBox.sendData();
+          this.$main.addData();
         }
       }
     });

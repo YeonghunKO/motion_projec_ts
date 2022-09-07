@@ -53,7 +53,7 @@ export default class InfoBox implements ModalType {
     getElement(`.modal_info_box.${type}`).classList.remove('show');
   }
 
-  addData() {
+  sendData() {
     const $titleInput = getElement(`.modal_info_box.${this.type} .title_input`);
     const $bodyInput = getElement(`.modal_info_box.${this.type} .body_input`);
     const titleInputVal = ($titleInput as HTMLInputElement).value;

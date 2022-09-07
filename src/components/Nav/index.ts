@@ -1,9 +1,9 @@
-import { $app, createElement } from '../../utils/dom';
+import { $app, createElement, getElement } from '../../utils/dom';
 import Button from '../Button';
 import Modal from '../Modal';
 
 export default class Nav {
-  private $NavBox = createElement({ type: 'nav', classes: ['nav_box'] });
+  private $NavBox = getElement('.nav_box');
   private banner: string;
   private $modal: Modal;
   constructor({ banner, $modal }: { banner: string; $modal: Modal }) {
@@ -29,8 +29,6 @@ export default class Nav {
     this.addEventToButtons($buttonsContainer);
 
     this.$NavBox.append($banner, $buttonsContainer);
-
-    $app?.appendChild(this.$NavBox);
   }
 
   addEventToButtons($buttonsContainer: HTMLElement) {
