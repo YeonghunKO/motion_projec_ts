@@ -1,0 +1,11 @@
+@import './variables';
+
+.data_container {
+  margin-top: 1rem;
+  height: 70%;
+  width: 90%;
+  background-color: $gray;
+  overflow-y: scroll;
+  border-radius: 1rem;
+  margin: 0 auto;
+}

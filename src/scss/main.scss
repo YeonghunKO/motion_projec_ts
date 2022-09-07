@@ -2,9 +2,15 @@
 @import './_reset';
 @import './Nav';
 @import './Modal';
+@import './Main';
 
 body {
   background: url('../img/motion-background.png');
   background-size: cover;
   height: 100vh;
+  overflow-y: hidden;
+}
+
+#app {
+  height: 100%;
 }
