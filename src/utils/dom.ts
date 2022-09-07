@@ -45,8 +45,14 @@ const createModalInfoBox = ({
   return box;
 };
 
-const createMain = () => {};
+const createMain = () => {
+  const $main = createElement({ type: 'section', classes: ['data_container'] });
+  const $ul = createElement({ type: 'ul', classes: ['data_container_ul'] });
+  $main.appendChild($ul);
+
+  return { $main, $ul };
+};
 
 const $app = getElement('#app');
 
-export { createElement, getElement, $app, createModalInfoBox };
+export { createElement, getElement, $app, createModalInfoBox, createMain };
