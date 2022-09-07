@@ -1,6 +1,14 @@
 import { DataFormat } from '../../types/Data';
 import { data } from '../../utils/store/data';
-import { $app, getElement, createElement } from '../../utils/dom';
+import {
+  $app,
+  getElement,
+  createElement,
+  createImageList,
+  createVideoList,
+  createNoteList,
+  createTaskList,
+} from '../../utils/dom';
 
 export default class Main {
   private $internalMain: HTMLElement = getElement('.data_container');
@@ -26,6 +34,8 @@ export default class Main {
   }
 
   addData() {
-    // const $newList = create
+    const lastData = data.getLastestData();
+    const $newList = createTaskList(lastData);
+    this.$ul.appendChild($newList);
   }
 }

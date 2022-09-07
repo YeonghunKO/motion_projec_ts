@@ -11,6 +11,10 @@ class Data {
     this.dataArray = updatedArray;
   }
 
+  getLastestData() {
+    return this.data[this.data.length - 1];
+  }
+
   dispatch(action: dispatchAction) {
     switch (action.type) {
       case 'ADD':

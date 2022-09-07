@@ -23,6 +23,7 @@ type CreateElement = {
   type: string;
   classes?: string[];
   id?: string;
+  attribute?: { id: string; val: string };
 };
 
 type CreateModalInfoBox = {

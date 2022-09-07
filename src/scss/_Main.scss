@@ -8,4 +8,22 @@
   overflow-y: scroll;
   border-radius: 1rem;
   margin: 0 auto;
+  transition: all 0.3s;
+
+  & ul {
+    padding: 2rem;
+  }
+
+  & li {
+    cursor: pointer;
+    margin-bottom: 1rem;
+    header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &.over {
+      transform: scale(1.1, 1.1);
+    }
+  }
 }
