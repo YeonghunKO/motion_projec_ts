@@ -34,7 +34,10 @@ export default class Nav {
   addEventToButtons($buttonsContainer: HTMLElement) {
     $buttonsContainer.addEventListener('click', ({ target }) => {
       // (target as Element).textContent
-      if (target instanceof Element) {
+      if (
+        target instanceof Element &&
+        target.classList.contains('nav_button')
+      ) {
         const { textContent } = target;
         this.$modal.type = textContent;
         this.$modal.show();

@@ -57,8 +57,10 @@ export default class Modal implements ModalType {
   }
 
   show() {
-    this.$container?.classList.add('show');
-    this.$infoBox.show(this.type);
+    if (this.type) {
+      this.$container.classList.add('show');
+      this.$infoBox.show(this.type);
+    }
   }
 
   close() {
