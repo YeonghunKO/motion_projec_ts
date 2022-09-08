@@ -4,8 +4,62 @@ import { data } from '../../utils/store/data';
 
 import { DataFormat } from '../../types/Data';
 
-import { v4 as uuid } from 'uuid';
+import ShortUniqueId from 'short-unique-id';
+const uuid = new ShortUniqueId({
+  dictionary: 'hex', // the default
+});
 
+uuid.setDictionary([
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+]);
 export default class InfoBox implements ModalType {
   private internalType: string;
   constructor() {}
@@ -45,7 +99,7 @@ export default class InfoBox implements ModalType {
   }
 
   show(type: string) {
-    getElement(`.modal_info_box.${type}`).classList.add('show');
+    getElement(`.modal_info_box.${type}`)?.classList.add('show');
   }
 
   close(type: string) {
@@ -61,7 +115,7 @@ export default class InfoBox implements ModalType {
 
     if (titleInputVal.length && bodyInputVal.length) {
       const newData: DataFormat = {
-        id: uuid(),
+        id: uuid.randomUUID(11),
         type: this.type,
         title: titleInputVal,
         body: this.type === 'TASK' ? bodyInputVal.split('\n') : bodyInputVal,

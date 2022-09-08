@@ -2,7 +2,7 @@ import { $app, createElement, getElement } from '../../utils/dom';
 import { data } from '../../utils/store/data';
 import { DataFormat } from '../../types/Data';
 import { ModalType } from '../../types/Modal';
-import { v4 as uuid } from 'uuid';
+
 import InfoBox from './InfoBox';
 import Main from '../Main';
 
@@ -57,7 +57,7 @@ export default class Modal implements ModalType {
   }
 
   show() {
-    this.$container.classList.add('show');
+    this.$container?.classList.add('show');
     this.$infoBox.show(this.type);
   }
 
