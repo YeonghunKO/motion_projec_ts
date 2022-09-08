@@ -2,12 +2,7 @@ import { CreateElement, CreateModalInfoBox } from '../types/Dom';
 import { DataFormat } from '../types/Data';
 import { addEventDragAndDrop } from './addDragAndDrop';
 
-const createElement = ({
-  type,
-  classes,
-  id,
-  attribute,
-}: CreateElement): HTMLElement => {
+const createElement = ({ type, classes, id, attribute }: CreateElement) => {
   const element = document.createElement(type);
   if (classes) {
     classes.forEach(className => element.classList.add(className));
@@ -54,49 +49,16 @@ const createModalInfoBox = ({
   return box;
 };
 
-const listHeaderTemplate = (title: string, id: string) => {
-  const $header = createElement({ type: 'header', classes: ['list_header'] });
-
-  $header.innerHTML = `
+const listHeaderTemplate = (title: string) => {
+  return `
+  <header class='list_header'>
   <h2>${title}</h2>
   <i class="far fa-trash-alt"></i>
+  </header>
   `;
-  return $header;
 };
 
-const createImageList = (newData: DataFormat) => {
-  const { id, type, title, body } = newData;
-  const $li = createElement({ type: 'li', id, classes: [`${type}`] });
-  $li.innerHTML = `
-    ${listHeaderTemplate(title, id)}
-    <img src='${body}' alt='${title}'/>
-   `;
-
-  return $li;
-};
-const createVideoList = (newData: DataFormat) => {
-  const { id, type, title, body } = newData;
-  const $li = createElement({ type: 'li', id, classes: [`${type}`] });
-  $li.appendChild(listHeaderTemplate(title, id));
-  $li.innerHTML = `
-    <iframe src="${body}"></iframe>
-   `;
-
-  return $li;
-};
-
-const createNoteList = (newData: DataFormat) => {
-  const { id, type, title, body } = newData;
-  const $li = createElement({ type: 'li', id, classes: [`${type}`] });
-  $li.innerHTML = `
-     ${listHeaderTemplate(title, id)}
-     <h3>${body}</h3>
-   `;
-  return $li;
-};
-
-const createTaskList = (newData: DataFormat) => {
-  const { id, type, title, body } = newData;
+const createDraggableList = (id: string, type: string) => {
   const $li = createElement({
     type: 'li',
     id,
@@ -104,12 +66,52 @@ const createTaskList = (newData: DataFormat) => {
     attribute: { id: 'draggable', val: 'true' },
   });
   addEventDragAndDrop($li);
-  const $ul = createElement({ type: 'ul' });
-  $li.appendChild(listHeaderTemplate(title, id));
-  $ul.innerHTML = `
-  ${(body as string[]).map((task: string) => `<li>${task}</li>`).join('')}
+  return $li as HTMLLIElement;
+};
+
+const createImageList = (newData: DataFormat): HTMLLIElement => {
+  const { id, type, title, body } = newData;
+  const $li = createDraggableList(id, type);
+  $li.innerHTML = `
+    ${listHeaderTemplate(title)}
+    <img src='${body}' alt='${title}'/>
    `;
-  $li.appendChild($ul);
+
+  return $li;
+};
+const createVideoList = (newData: DataFormat) => {
+  const { id, type, title, body } = newData;
+  const $li = createDraggableList(id, type);
+
+  $li.innerHTML = `
+    ${listHeaderTemplate(title)}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/${
+      (body as string).split('=')[1]
+    }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   `;
+
+  return $li;
+};
+
+const createNoteList = (newData: DataFormat) => {
+  const { id, type, title, body } = newData;
+  const $li = createDraggableList(id, type);
+  $li.innerHTML = `
+     ${listHeaderTemplate(title)}
+     <h3>${body}</h3>
+   `;
+  return $li;
+};
+
+const createTaskList = (newData: DataFormat): HTMLLIElement => {
+  const { id, type, title, body } = newData;
+  const $li = createDraggableList(id, type);
+  $li.innerHTML = `
+  
+  ${listHeaderTemplate(title)}
+  ${(body as string[]).map((task: string) => `<li>${task}</li>`).join('')}
+  `;
+
   return $li;
 };
 

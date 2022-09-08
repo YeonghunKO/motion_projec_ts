@@ -39,9 +39,11 @@ function dragDrop(e: DragEvent) {
     this.innerHTML = content;
     this.id = id;
   }
+  dragSrcEl.style.opacity = '1';
   this.classList.remove('over');
 }
 
 function dragEnd() {
   this.style.opacity = 1;
+  console.log('end this', this);
 }

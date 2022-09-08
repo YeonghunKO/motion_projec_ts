@@ -36,7 +36,25 @@ export default class Main {
 
   addData() {
     const lastData = data.getLastestData();
-    const $newList = createTaskList(lastData);
+    let $newList: HTMLLIElement;
+    switch (lastData.type) {
+      case 'IMAGE':
+        $newList = createImageList(lastData);
+        break;
+      case 'VIDEO':
+        $newList = createVideoList(lastData);
+        break;
+      case 'NOTE':
+        $newList = createNoteList(lastData);
+        break;
+      case 'TASK':
+        $newList = createTaskList(lastData);
+
+        break;
+
+      default:
+        break;
+    }
     this.$ul.appendChild($newList);
   }
 

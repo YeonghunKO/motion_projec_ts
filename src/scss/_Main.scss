@@ -15,11 +15,29 @@
   }
 
   & li {
+    background-color: $lightWhite;
+    padding: 1rem;
+    width: 70%;
+    height: 80%;
+    margin: 0 auto;
     cursor: pointer;
     margin-bottom: 1rem;
+    border-radius: 1rem;
+    transition: all 0.3s;
+    box-shadow: 15px 13px 20px -12px rgba(0, 0, 0, 0.75);
+
     header {
       display: flex;
       justify-content: space-between;
+    }
+
+    .fa-trash-alt {
+      color: $red;
+    }
+
+    img,
+    iframe {
+      width: 100%;
     }
 
     &.over {
