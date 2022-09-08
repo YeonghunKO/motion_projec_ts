@@ -1,7 +1,6 @@
 import { CreateElement, CreateModalInfoBox } from '../types/Dom';
 import { DataFormat } from '../types/Data';
 import { addEventDragAndDrop } from './addDragAndDrop';
-import { data } from './store/data';
 
 const createElement = ({
   type,
@@ -57,20 +56,11 @@ const createModalInfoBox = ({
 
 const listHeaderTemplate = (title: string, id: string) => {
   const $header = createElement({ type: 'header', classes: ['list_header'] });
-  const $button = createElement({
-    type: 'button',
-    classes: ['list__close_button'],
-  });
-  const $h2 = createElement({ type: 'h2' });
-  $h2.innerHTML = title;
-  $button.innerText = 'X';
-  $button.addEventListener('click', function () {
-    this.parentElement.parentElement.remove();
-    data.dispatch({ type: 'REMOVE', id });
-    console.log(data.data);
-  });
 
-  $header.append($h2, $button);
+  $header.innerHTML = `
+  <h2>${title}</h2>
+  <i class="far fa-trash-alt"></i>
+  `;
   return $header;
 };
 

@@ -48,7 +48,7 @@ module.exports = {
   ],
   devServer: {
     host: 'localhost', // live-server host 및 port
-    port: 5500,
+    port: 5600,
   },
   mode: 'development', // 번들링 모드 development / production
   devtool: 'source-map',

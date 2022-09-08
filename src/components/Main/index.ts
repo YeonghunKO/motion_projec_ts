@@ -18,6 +18,7 @@ export default class Main {
   });
   constructor() {
     this.render();
+    this.addEventToLists();
   }
 
   get $main() {
@@ -37,5 +38,23 @@ export default class Main {
     const lastData = data.getLastestData();
     const $newList = createTaskList(lastData);
     this.$ul.appendChild($newList);
+  }
+
+  addEventToLists() {
+    const $internalUl = getElement('.data_container_ul');
+    $internalUl.addEventListener('click', function (e) {
+      const { classList } = e.target as HTMLElement;
+      const $li = (e.target as HTMLElement).closest('li');
+
+      if (!$li) {
+        return;
+      }
+
+      if (classList.contains('fa-trash-alt')) {
+        $li.remove();
+        data.dispatch({ type: 'REMOVE', id: $li.id });
+        console.log(data.data);
+      }
+    });
   }
 }
