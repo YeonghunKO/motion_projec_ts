@@ -7,8 +7,4 @@ export default class App {
   private $modal = new Modal({ $main: this.$main });
   private $nav = new Nav({ banner: 'Motion', $modal: this.$modal });
   constructor() {}
-
-  // injectMainToModal() {
-  //   this.$modal.inject(this.$main)
-  // }
 }

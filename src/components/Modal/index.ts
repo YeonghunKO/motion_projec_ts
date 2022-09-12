@@ -1,6 +1,4 @@
-import { $app, createElement, getElement } from '../../utils/dom';
-import { data } from '../../utils/store/data';
-import { DataFormat } from '../../types/Data';
+import { $app, createElement } from '../../utils/dom';
 import { ModalType } from '../../types/Modal';
 
 import InfoBox from './InfoBox';

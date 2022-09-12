@@ -1,7 +1,5 @@
-import { DataFormat } from '../../types/Data';
 import { data } from '../../utils/store/data';
 import {
-  $app,
   getElement,
   createElement,
   createImageList,
@@ -31,7 +29,6 @@ export default class Main {
 
   render() {
     this.$main.appendChild(this.$ul);
-    // $app.appendChild(this.$main);
   }
 
   addData() {
